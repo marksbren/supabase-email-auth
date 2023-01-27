@@ -1,7 +1,7 @@
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Dashboard from '../components/Dashboard'
 import HomeComponent from '../components/HomeComponent'
-  
+
 const Home = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
