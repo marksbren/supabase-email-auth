@@ -1,7 +1,7 @@
 import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 const securedPaths = ['/account']
-const inaccessibleWhenLoggedIn = ['/login','/signup']
+const inaccessibleWhenLoggedIn = ['/a']
 
 
 export async function middleware(req) {
@@ -39,5 +39,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/account','/login','/signup'],
+  matcher: ['/account','/a'],
 }
