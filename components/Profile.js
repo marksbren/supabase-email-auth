@@ -69,56 +69,60 @@ export default function Profile({ session }) {
   }
 
   return (
-    <div className="form-widget">
-      {/* Add to the body */}
-      <Avatar
-        uid={user.id}
-        url={avatar_url}
-        size={150}
-        onUpload={(url) => {
-          setAvatarUrl(url)
-          updateProfile({ username, website, avatar_url: url })
-        }}
-      />
-      {/* ... */}
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="website"
-          value={website || ''}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <button
-          className="button primary block"
-          onClick={() => updateProfile({ username, website, avatar_url })}
-          disabled={loading}
-        >
-          {loading ? 'Loading ...' : 'Update'}
-        </button>
-      </div>
-
-      <div>
-        <button className="button block" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-4 offset-md-4">
+          <h1>Account</h1>
+          <form>
+            {/* Add to the body */}
+            <Avatar
+              uid={user.id}
+              url={avatar_url}
+              size={150}
+              onUpload={(url) => {
+                setAvatarUrl(url)
+                updateProfile({ username, website, avatar_url: url })
+              }}
+            />
+            {/* ... */}
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" type="text" class="form-control" value={session.user.email} disabled />
+            </div>
+            <div class="form-group">
+              <label for="username" >Username</label>
+              <input
+                class="form-control" 
+                id="username"
+                type="text"
+                value={username || ''}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div  class="form-group">
+              <label for="website">Website</label>
+              <input
+                class="form-control" 
+                id="website"
+                type="website"
+                value={website || ''}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </div>
+            <button
+              className="btn btn-primary"
+              onClick={() => updateProfile({ username, website, avatar_url })}
+              disabled={loading}
+            >
+              {loading ? 'Loading ...' : 'Save'}
+            </button>
+            <button className="btn btn-secondary" onClick={() => supabase.auth.signOut()}>
+              Logout
+            </button>
+          </form>
+        </div>
       </div>
     </div>
+    
   )
 }

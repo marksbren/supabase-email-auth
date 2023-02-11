@@ -54,7 +54,8 @@ export default function Avatar({ uid, url, size, onUpload }) {
   }
 
   return (
-    <div>
+    <div class="form-group">
+      <label>Profile image</label>
       {avatarUrl ? (
         <img
           src={avatarUrl}
@@ -66,7 +67,7 @@ export default function Avatar({ uid, url, size, onUpload }) {
         <div className="avatar no-image" style={{ height: size, width: size }} />
       )}
       <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
+        <label className="btn btn-secondary" htmlFor="single">
           {uploading ? 'Uploading ...' : 'Upload'}
         </label>
         <input

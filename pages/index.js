@@ -1,13 +1,17 @@
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useSessionContext } from '@supabase/auth-helpers-react'
+import { useState, useEffect } from 'react'
 import Dashboard from '../components/Dashboard'
 import HomeComponent from '../components/HomeComponent'
 
 const Home = () => {
-  const session = useSession()
-  const supabase = useSupabaseClient()
+  const { isLoading, session, error } = useSessionContext();
 
-  return (  
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+  if(isLoading){
+    return null
+  }
+
+  return (
+    <div className="container">
       {!session ? (
         <HomeComponent session={session} />
       ) : (

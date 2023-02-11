@@ -20,12 +20,16 @@ const Login = () => {
   }, [session]);
 
   return (  
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      <Auth 
-        supabaseClient={supabase} 
-        view={startingForm}
-        appearance={{ theme: ThemeSupa }} 
-      />
+    <div className="container">
+      <div className="row">
+        <div className="col-md-4 offset-md-4">
+          <Auth 
+            supabaseClient={supabase} 
+            view={startingForm}
+            appearance={{ theme: ThemeSupa }} 
+          />
+        </div>
+      </div>
     </div>
   )
 }
